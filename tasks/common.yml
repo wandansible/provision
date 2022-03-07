@@ -1,4 +1,12 @@
 ---
+- name: Set root password
+  ansible.builtin.user:
+    name: root
+    password: "{{ root_password | string | password_hash('sha512') }}"
+  when:
+    - root_password is defined
+    - root_password != ""
+
 - name: Install latest apt packages
   ansible.builtin.apt:
     update_cache: yes
