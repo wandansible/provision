@@ -1,3 +1,9 @@
 ---
 - ansible.builtin.import_tasks: credentials.yml
-- ansible.builtin.import_tasks: common.yml
+
+- name: Run common provisioning tasks as provision user
+  vars:
+    ansible_user: "{{ provision_user_username }}"
+    ansible_ssh_pass: "{{ provision_user_password }}"
+    ansible_become_pass: "{{ provision_user_password }}"
+  ansible.builtin.import_tasks: common.yml
