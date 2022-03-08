@@ -4,3 +4,6 @@ provision_user_ssh_password: ""
 provision_ssh_password_authentication: false
 
 provision_full_upgrade: true
+
+provision_user_public_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2j7zQRR6VhATko1eFexV/iCEQFNyLYpP8gn3fg0Bxn ansible@wand"
+provision_user_private_key_file: "ssh/ansible_ed25519"
