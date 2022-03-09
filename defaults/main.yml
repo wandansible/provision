@@ -1,4 +1,6 @@
 ---
 provision_user_keep: false
+provision_user_ssh_password: ""
+provision_ssh_password_authentication: false
 
 provision_full_upgrade: true
