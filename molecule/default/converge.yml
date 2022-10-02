@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include wandansible.provision"
+      ansible.builtin.include_role:
+        name: "wandansible.provision"
+  become: true
