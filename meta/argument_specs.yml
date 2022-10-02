@@ -1,7 +1,7 @@
 ---
 argument_specs:
   main:
-    short_description: Base provision role
+    short_description: Base role for handling machine provisioning
     description: |
       Handles all the common tasks associated with provisioning hosts.
       This includes prompting for a username and password when required,
