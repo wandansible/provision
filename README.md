@@ -97,3 +97,8 @@ Example Playbook
            become: true
            vars:
              root_password: "hunter2"
+      post_tasks:
+         - name: Reboot and remove the provision user
+           ansible.builtin.import_role:
+             name: wandansible.provision
+             tasks_from: reboot

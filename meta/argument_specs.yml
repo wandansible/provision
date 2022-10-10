@@ -54,6 +54,16 @@ argument_specs:
         type: bool
         default: true
 
+      provision_reboot:
+        description: If true, ask user whether to reboot the host
+        type: bool
+        default: true
+
+      provision_reboot_timeout:
+        description: Time in seconds to wait for the host to reboot
+        type: int
+        default: 600
+
       root_password:
         description: Password for the root user
         type: str
