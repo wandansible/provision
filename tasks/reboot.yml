@@ -1,0 +1,26 @@
+---
+- block:
+    - name: Reboot before removing provision user
+      ansible.builtin.pause:
+        prompt: >-
+          The machine has finished being built,
+          a reboot may be necessary to successfully remove the provision user.
+          Do you want to reboot the machine? (y/n)
+      register: _reboot_check_resonse
+
+    - name: Reboot machine
+      ansible.builtin.reboot:
+        reboot_timeout: "{{ provision_reboot_timeout }}"
+      when:
+        - "'user_input' in _reboot_check_resonse"
+        - >-
+            _reboot_check_resonse.user_input | lower == 'y' or
+            _reboot_check_resonse.user_input | lower == 'yes'
+  when: provision_reboot | bool
+
+- name: Remove provision user
+  ansible.builtin.user:
+    name: "{{ provision_user_username }}"
+    state: absent
+    remove: true
+  when: not provision_user_keep | bool
